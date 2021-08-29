@@ -1,10 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
-apply from: 'libs.gradle'
 apply from: '../modules.gradle'
 
 android {
@@ -49,26 +47,4 @@ dependencies {
     implementation project(Modules.Domain)
     implementation project(Modules.Data)
     implementation project(Modules.Presentation)
-
-    implementation Libs.KotlinStdLib
-    implementation Libs.CoreKtx
-    implementation Libs.AppCompat
-    implementation Libs.Material
-    implementation Libs.Fragment
-
-    implementation Libs.Koin
-    implementation Libs.KoinAndroid
-    implementation Libs.Retrofit
-    implementation Libs.OkHttp
-    implementation Libs.OkHttpLoggingInterceptor
-    implementation Libs.RxJava
-    implementation Libs.RxJavaCallAdapter
-    implementation Libs.Moshi
-    implementation Libs.MoshiConverter
-
-    kapt Libs.MoshiCodegen
-
-    testImplementation Libs.JUnit
-    androidTestImplementation Libs.JUnitExt
-    androidTestImplementation Libs.Espresso
 }

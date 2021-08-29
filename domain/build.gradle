@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
 }
 
-apply from: 'libs.gradle'
+apply from: '../libs.gradle'
 apply from: '../modules.gradle'
 
 android {
