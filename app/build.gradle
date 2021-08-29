@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: 'libs.gradle'
+apply from: '../modules.gradle'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion '30.0.3'
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.example.pokemon_app"
+        minSdkVersion 22
+        //noinspection OldTargetApi
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(Modules.Core)
+    implementation project(Modules.Domain)
+    implementation project(Modules.Data)
+    implementation project(Modules.Presentation)
+
+    implementation Libs.KotlinStdLib
+    implementation Libs.CoreKtx
+    implementation Libs.AppCompat
+    implementation Libs.Material
+    implementation Libs.Fragment
+
+    implementation Libs.Koin
+    implementation Libs.KoinAndroid
+    implementation Libs.Retrofit
+    implementation Libs.OkHttp
+    implementation Libs.OkHttpLoggingInterceptor
+    implementation Libs.RxJava
+    implementation Libs.RxJavaCallAdapter
+    implementation Libs.Moshi
+    implementation Libs.MoshiConverter
+
+    kapt Libs.MoshiCodegen
+
+    testImplementation Libs.JUnit
+    androidTestImplementation Libs.JUnitExt
+    androidTestImplementation Libs.Espresso
+}

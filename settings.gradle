@@ -1,0 +1,6 @@
+rootProject.name = "pokemon-app"
+include ':app'
+include ':core'
+include ':data'
+include ':domain'
+include ':presentation'

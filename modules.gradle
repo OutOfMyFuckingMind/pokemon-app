@@ -1,0 +1,13 @@
+ext {
+
+    Modules = [
+//            Core: project(path: ':core'),
+//            Presentation: project(path: ':presentation'),
+//            Domain: project(path: ':domain'),
+//            Data: project(path: ':data'),
+            Core: ':core',
+            Presentation: ':presentation',
+            Domain: ':domain',
+            Data: ':data',
+    ]
+}
