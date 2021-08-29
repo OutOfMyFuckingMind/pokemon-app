@@ -5,7 +5,5 @@ import org.koin.core.module.Module
 
 object NetworkDiModuleProvider : DiModuleProvider {
 
-    override fun provide(): Module {
-        return networkModule
-    }
+    override fun provide() = networkModule
 }

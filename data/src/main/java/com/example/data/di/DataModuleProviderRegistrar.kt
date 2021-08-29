@@ -8,6 +8,7 @@ class DataModuleProviderRegistrar : DiModuleProviderRegistrar {
     override fun register(app: BaseKoinApplication) {
         app.registerModuleProviders(
             NetworkDiModuleProvider,
+            DatabaseDiModuleProvider,
         )
     }
 }

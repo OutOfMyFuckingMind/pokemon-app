@@ -28,6 +28,8 @@ private const val CACHE_MAX_SIZE = 50L * 1024L * 1024L
 
 internal val networkModule = module {
 
+    fun providePokemonService(retrofit: Retrofit) = retrofit.create(PokemonService::class.java)
+
     single(named(BASE_URL)) { "https://pokeapi.co/api/v2/" }
 
     single {
@@ -72,13 +74,5 @@ internal val networkModule = module {
             .build()
     }
 
-    single<PokemonService> { (retrofit: Retrofit) ->
-        retrofit.create(PokemonService::class.java)
-    }
-
-    single<PokemonRepository> {
-        PokemonRepositoryImpl(
-            get(parameters = { parametersOf(get<Retrofit>()) })
-        )
-    }
+    single<PokemonService> { providePokemonService(get()) }
 }

@@ -6,6 +6,7 @@ ext {
     def moshi_version = '1.12.0'
     def rxjava_version = '2.2.21'
     def moshi_converter_version = '2.4.0'
+    def room_version = '2.3.0'
 
     Libs = [
             KotlinStdLib: "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
@@ -27,5 +28,8 @@ ext {
             Moshi: "com.squareup.moshi:moshi:$moshi_version",
             MoshiCodegen: "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version",
             MoshiConverter: "com.squareup.retrofit2:converter-moshi:$moshi_converter_version",
+            RoomRuntime: "androidx.room:room-runtime:$room_version",
+            RoomCompiler: "androidx.room:room-compiler:$room_version",
+            RoomRxJava: "androidx.room:room-rxjava2:$room_version",
     ]
 }

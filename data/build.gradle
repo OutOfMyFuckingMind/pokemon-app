@@ -57,6 +57,9 @@ dependencies {
     implementation Libs.RxJavaCallAdapter
     implementation Libs.Moshi
     implementation Libs.MoshiConverter
+    implementation Libs.RoomRuntime
+    implementation Libs.RoomRxJava
 
+    kapt Libs.RoomCompiler
     kapt Libs.MoshiCodegen
 }
