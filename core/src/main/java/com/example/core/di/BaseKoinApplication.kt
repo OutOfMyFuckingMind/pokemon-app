@@ -11,8 +11,12 @@ open class BaseKoinApplication : Application() {
 
     private val koinModuleProviders = mutableListOf<DiModuleProvider>()
 
-    protected fun registerModuleProviders(vararg moduleProviders: DiModuleProvider) {
+    fun registerModuleProviders(vararg moduleProviders: DiModuleProvider) {
         koinModuleProviders.addAll(moduleProviders.toList())
+    }
+
+    protected fun addRegistrar(registrar: DiModuleProviderRegistrar) {
+        registrar.register(this)
     }
 
     override fun onCreate() {

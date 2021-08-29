@@ -1,19 +1,17 @@
 package com.example.pokemon_app
 
 import com.example.core.di.BaseKoinApplication
-import com.example.data.di.NetworkDiModuleProvider
-import com.example.domain.di.DomainDiModuleProvider
-import com.example.presentation.di.PresentationDiModuleProvider
+import com.example.data.di.DataModuleProviderRegistrar
+import com.example.domain.di.DomainModuleProviderRegistrar
+import com.example.presentation.di.PresentationModuleProviderRegistrar
 
 class PokeApp : BaseKoinApplication() {
 
     override fun onCreate() {
 
-        registerModuleProviders(
-            NetworkDiModuleProvider,
-            DomainDiModuleProvider,
-            PresentationDiModuleProvider
-        )
+        addRegistrar(DataModuleProviderRegistrar())
+        addRegistrar(DomainModuleProviderRegistrar())
+        addRegistrar(PresentationModuleProviderRegistrar())
 
         super.onCreate()
     }
