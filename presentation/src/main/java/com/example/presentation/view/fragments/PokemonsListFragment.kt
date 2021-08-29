@@ -1,4 +1,4 @@
-package com.example.presentation.view
+package com.example.presentation.view.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core.fragments.BaseFragment
 import com.example.domain.models.PokemonModel
 import com.example.presentation.R
 import com.example.presentation.databinding.FmtPokemonListBinding
@@ -15,7 +15,7 @@ import com.example.presentation.inflate
 import com.example.presentation.viewmodel.PokemonListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PokemonsListFragment : Fragment() {
+class PokemonsListFragment : BaseFragment() {
 
     private lateinit var viewBinding: FmtPokemonListBinding
     private val pokemonListViewModel: PokemonListViewModel by viewModel()
@@ -43,7 +43,7 @@ class PokemonsListFragment : Fragment() {
 
     class PokemonListAdapter : RecyclerView.Adapter<PokemonViewHolder>() {
 
-        val items: MutableList<PokemonModel> = mutableListOf()
+        private val items: MutableList<PokemonModel> = mutableListOf()
 
         @SuppressLint("NotifyDataSetChanged")
         fun refreshList(newItems: List<PokemonModel>) {

@@ -1,15 +1,25 @@
-package com.example.presentation
+package com.example.presentation.view.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.core.activity.BottomBarVisibilityManager
+import com.example.presentation.R
 import com.example.presentation.databinding.AcRootBinding
-import com.example.presentation.view.FavoritePokemonsListFragment
-import com.example.presentation.view.PokemonsListFragment
+import com.example.presentation.view.fragments.FavoritePokemonsListFragment
+import com.example.presentation.view.fragments.PokemonsListFragment
 
-class RootActivity : AppCompatActivity() {
+class RootActivity : AppCompatActivity(), BottomBarVisibilityManager {
 
     private lateinit var viewBinding: AcRootBinding
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStack()
+        } else {
+            super.onBackPressed()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +36,14 @@ class RootActivity : AppCompatActivity() {
         setContentView(view)
     }
 
+    override fun hideBottomNavBar() {
+        viewBinding.root.transitionToEnd()
+    }
+
+    override fun showBottomNavBar() {
+        viewBinding.root.transitionToStart()
+    }
+
     private fun initAppBar() {}
 
     private fun initFragmentHost() = openPokemonsList()
@@ -38,6 +56,7 @@ class RootActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_host, fragment)
         transaction.commit()
+        transaction.addToBackStack(fragment.toString())
     }
 
     private fun initBottomNavBar() {
