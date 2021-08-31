@@ -1,0 +1,21 @@
+detekt {
+
+    debug = true
+    config = files('./detekt/config.yaml')
+    buildUponDefaultConfig = true
+
+    source = files(
+        'app',
+        'core',
+        'domain',
+        'presentation',
+        'data',
+    )
+
+    reports {
+        html {
+            enabled = true
+            destination = file("./detekt/report.html")
+        }
+    }
+}
